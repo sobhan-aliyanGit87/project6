@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کیا فرایند نوتریکا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            overflow-x: hidden;
+        }
+
+        .hero1 {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            z-index: 1;
+            margin-bottom: 20px;
+            gap: 20px;
+            padding: 12px 40px;
+            font-size: 1.2rem;
+            flex-direction: column;
+            border-radius: 60px;
+        }
+
+        .image-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            transition: transform 1s ease-in-out;
+        }
+
+        .image-slider img.slider-active {
+            transform: translateX(0);
+        }
+
+        .image-slider img.slider-prev {
+            transform: translateX(-100%);
+        }
+
+        .image-slider img.slider-next {
+            transform: translateX(100%);
+        }
+
+        .text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            text-align: center;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 35px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-content {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 350px;
+            }
+
+            .text-overlay {
+                width: 90%;
+                padding: 10px;
+            }
+
+            .text-content {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero1">
+        <div class="image-slider">
+            <img src="1sadd.webp" alt="Image 1" class="slider-active">
+            <img src="1saddd.webp" alt="Image 2" class="slider-next">
+            <img src="1sad.webp" alt="Image 3" class="slider-next">
+        </div>
+       
+    </section>
+
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll('.image-slider img');
+        const totalImages = images.length;
+
+        setInterval(() => {
+            let current = images[index];
+            let nextIndex = (index + 1) % totalImages;
+            let next = images[nextIndex];
+
+            current.classList.remove('slider-active');
+            current.classList.add('slider-prev');
+
+            next.classList.remove('slider-next');
+            next.classList.add('slider-active');
+
+            index = nextIndex;
+
+            setTimeout(() => {
+                current.classList.remove('slider-prev');
+                current.classList.add('slider-next');
+            }, 1000);
+        }, 10000);
+    </script>
+
+</body>
+</html>

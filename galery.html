@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>گالری عکس حرفه‌ای</title>
+  <style>
+    /* تنظیمات عمومی */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* گالری تصاویر */
+    .gallery-container {
+      padding: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .gallery-item {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      animation: zoomIn 0.3s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+
+    /* بخش شرکت‌های مرتبط */
+    .related-companies {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .related-companies h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .company-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .company-logo:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+    <br>
+    <br>
+  <!-- گالری تصاویر -->
+  <div class="gallery-container">
+    <h2>گالری تصاویر</h2>
+    <div class="gallery">
+      <!-- تصاویر گالری -->
+      <div class="gallery-item">
+        <img src="mohit.jpg" alt="تصویر 1">
+      </div>
+      <div class="gallery-item">
+        <img src="mohit1.jpg" alt="تصویر 2">
+      </div>
+      <
+      
+    </div>
+
+    <!-- Lightbox برای نمایش تصویر بزرگ‌تر -->
+    <div class="lightbox" id="lightbox">
+      <span class="close">&times;</span>
+      <img src="" alt="تصویر بزرگ" class="lightbox-content" id="lightbox-img">
+    </div>
+  </div>
+
+  <!-- بخش شرکت‌های مرتبط -->
+  <div class="related-companies">
+    <h3>شرکت‌های مرتبط</h3>
+    <div class="companies-grid">
+        <span>شرکت آزمون دانه غرب سپاهان</span>
+      <img src="az.png" alt="شرکت آزمون دانه غرب سپاهان" class="company-logo">
+    <br>
+      <img src="lab.png" alt="شرکت گلچین لبن سپاهان" class="company-logo">
+      <span>شرکت گلچین لبن سپاهان</span>
+     
+    </div>
+  </div>
+
+  <script>
+    // انتخاب المان‌ها
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close');
+
+    // نمایش Lightbox هنگام کلیک روی تصویر
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = item.querySelector('img').src;
+      });
+    });
+
+    // بستن Lightbox هنگام کلیک روی دکمه بستن
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    // بستن Lightbox هنگام کلیک خارج از تصویر
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فوتر حرفه‌ای و تیره</title>
+    <style>
+      /* Reset default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #fafafa;
+        color: #333;
+      }
+
+      /* Footer styling */
+      .footer {
+        background-color: #222;
+        color: #fff;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+      }
+
+      .footer:hover {
+        background-color: #1a1a1a;
+      }
+
+      /* Footer content container */
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        text-align: left;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+
+      .footer-section {
+        flex: 1;
+        padding: 20px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+        border-bottom: 2px solid #333;
+        position: relative;
+      }
+
+      .footer-section h3 {
+        font-size: 30px;
+        color: #ff4081;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .footer-section p {
+        font-size: 16px;
+        color: #b0bec5;
+        line-height: 1.7;
+        opacity: 0.85;
+        margin-bottom: 20px;
+        text-align: justify;
+      }
+
+      /* Hover effect for sections */
+      .footer-section:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Follow button styling */
+      .follow-button {
+        background-color: #ff4081;
+        color: white;
+        padding: 14px 50px;
+        font-size: 18px;
+        text-transform: uppercase;
+        border-radius: 40px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+      }
+
+      .follow-button:hover {
+        background-color: #ff80ab;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        background: #1a1a1a;
+        padding: 25px 0;
+        text-align: center;
+        font-size: 14px;
+        color: #b0bec5;
+        margin-top: 40px;
+        opacity: 0;
+        animation: fadeIn 1.5s 0.3s forwards;
+      }
+
+      .footer-bottom p {
+        opacity: 0.7;
+      }
+
+      /* Social media icons */
+      .footer-social {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeIn 1.2s 0.6s forwards;
+      }
+
+      .footer-social i {
+        font-size: 28px;
+        color: #b0bec5;
+        margin-right: 20px;
+        transition: color 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .footer-social i:hover {
+        color: #ff4081;
+        transform: scale(1.1);
+      }
+
+      /* Keyframe for fade-in animation */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive design */
+      @media screen and (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .footer-section {
+          margin-bottom: 30px;
+        }
+
+        .footer-social {
+          margin-top: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Left Section -->
+        <div class="footer-section">
+          <h3>اطلاعات شرکت</h3>
+          <p>کیا فرایند نوتریکا</p>
+          <p>تولیدکننده ریزمغذیات دامی با کیفیت برتر</p>
+          <p>مدیریت : علیان</p>
+        </div>
+
+        <!-- Center Section -->
+        <div class="footer-section">
+          <h3>آدرس</h3>
+          <p>
+            اصفهان-کیلومتر 5 جاده نجف آباد فولاد شهر,شهرک صنعتی 2 نجف آباد
+            <br />
+            کد پستی: 8585165187
+          </p>
+        </div>
+
+        <!-- Right Section -->
+        <div class="footer-section">
+          <h3>تماس با ما</h3>
+          <p>
+            تلفن ثابت : 41 - 42316640 - 031 <br />
+            تلفن همراه : 09134300158
+          </p>
+          <div class="footer-social">
+            <a href="#" class="me-3">
+              <img src="wats.png" alt="واتساپ" width="32" height="32">
+            </a>
+            <a href="#">
+              <img src="eta.png" alt="ایتا" width="32" height="32">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 شرکت کیافرا یند نوتریکا. تمامی حقوق محفوظ است.</p>
+      </div>
+    </footer>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>
+</html>

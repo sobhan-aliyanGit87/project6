@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چت آنلاین</title>
+  <style>
+    /* تنظیمات پایه صفحه */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #f4f4f4;
+      direction: rtl; /* جهت متن راست به چپ برای فارسی */
+    }
+
+    /* انیمیشن لرزش (Shake) */
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      75% {
+        transform: translateX(-3px);
+      }
+    }
+
+    /* ویجت چت آنلاین */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    /* آیکون اصلی */
+    .chat-widget .main-icon {
+      width: 60px;
+      height: 60px;
+      background-color: #0077b5;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: shake 1.5s infinite paused; /* انیمیشن لرزش */
+      position: relative; /* برای قرار دادن اعلان */
+    }
+
+    /* فعال کردن انیمیشن لرزش */
+    .chat-widget .main-icon.warn {
+      animation-play-state: running;
+    }
+
+    /* هنگام هاور روی آیکون اصلی */
+    .chat-widget .main-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* آیکون‌های چت */
+    .chat-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+
+    .chat-icons.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* استایل برای لینک‌ها */
+    .chat-icons a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .chat-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    /* تصاویر داخل آیکون‌ها */
+    .chat-icons img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* متن توضیحی هر آیکون */
+    .chat-icons a .icon-text {
+      font-size: 12px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 5px 8px;
+      border-radius: 5px;
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      white-space: nowrap;
+    }
+
+    /* نمایش متن هنگام هاور روی آیکون */
+    .chat-icons a:hover .icon-text {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* اعلان (Notification) */
+    .notification {
+      position: absolute;
+      top: 50%;
+      left: -150px; /* موقعیت اعلان در سمت چپ آیکون */
+      transform: translateY(-50%) scale(0); /* اولین حالت: کوچک و نامرئی */
+      width: 120px;
+      height: 40px;
+      background-color: #ff5722;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      pointer-events: none; /* جلوگیری از کلیک روی اعلان */
+    }
+
+    .notification.show {
+      transform: translateY(-50%) scale(1); /* حالت نهایی: بزرگ و مرئی */
+      opacity: 1;
+    }
+
+    /* اضافه کردن ظاهر بهتر برای آیکون اصلی */
+    .main-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-widget">
+    <!-- اعلان -->
+    <div class="notification">سلام! 😊</div>
+
+    <!-- آیکون‌های چت (واتساپ و ایتا) -->
+    <div class="chat-icons">
+      <!-- آیکون واتساپ -->
+      <a href="https://wa.me/989134300158" target="_blank" class="whatsapp-widget">
+        <img src="wats.png" alt="WhatsApp">
+        <span class="icon-text">واتساپ</span>
+      </a>
+      <!-- آیکون ایتا -->
+      <a href="https://eitaa.com/09134300158" target="_blank" class="eitaa-widget">
+        <img src="eta.png" alt="Eitaa">
+        <span class="icon-text">ایتا</span>
+      </a>
+    </div>
+
+    <!-- آیکون اصلی -->
+    <div class="main-icon" onclick="toggleChatIcons()">
+      <img src="ico.png" alt="Main Chat Icon">
+    </div>
+  </div>
+
+  <script>
+    // تابع برای نمایش یا مخفی کردن آیکون‌ها
+    let isChatOpen = false;
+    const notification = document.querySelector('.notification');
+    const mainIcon = document.querySelector('.main-icon');
+
+    function toggleChatIcons() {
+      const chatIcons = document.querySelector('.chat-icons');
+      chatIcons.classList.toggle('show'); // اضافه کردن/حذف کردن کلاس show برای نمایش انیمیشن
+
+      if (chatIcons.classList.contains('show')) {
+        isChatOpen = true;
+        mainIcon.classList.remove('warn'); // متوقف کردن انیمیشن لرزش
+        notification.classList.remove('show'); // مخفی کردن اعلان
+      } else {
+        isChatOpen = false;
+        setTimeout(() => {
+          mainIcon.classList.add('warn'); // شروع انیمیشن لرزش
+          notification.classList.add('show'); // نمایش اعلان
+          setTimeout(() => {
+            notification.classList.remove('show'); // بعد از 15 ثانیه، اعلان را مخفی کن
+          }, 15000);
+        }, 1000);
+      }
+
+      // اگر ویجت باز است، آیکون اصلی بالا می‌آید
+      if (isChatOpen) {
+        document.querySelector('.chat-widget').style.transform = 'translateY(-100px)';
+      } else {
+        document.querySelector('.chat-widget').style.transform = 'translateY(0)';
+      }
+    }
+  </script>
+
+</body>
+</html>

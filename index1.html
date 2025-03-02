@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کیا فرایند نوتریکا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            overflow-x: hidden;
+            padding-top: 50px; /* اضافه کردن فاصله از بالا برای جلوگیری از تداخل هدر */
+        }
+
+        /* هدر */
+        .hero {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000, #4c4c4c);
+            z-index: 1;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            text-align: center;
+        }
+
+        .hero .text-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            text-align: center;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .text-content {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-button {
+            padding: 15px 50px;
+            border-radius: 50px;
+            background-color: #fff;
+            color: #ff4081;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(255, 64, 129, 0.3);
+            transition: all 0.3s;
+            border: 2px solid #ff4081;
+        }
+
+        .hero-button:hover {
+            background-color: #ff4081;
+            color: #fff;
+            box-shadow: 0 4px 30px rgba(255, 64, 129, 0.5);
+        }
+
+        /* کارت‌ها */
+        .card-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .card {
+            width: 350px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 1.1rem;
+        }
+
+        /* بخش‌ها */
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .section-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-in {
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-in:hover {
+            transform: scale(1.1);
+        }
+
+        /* فرم تماس با ما */
+        .contact-section form input, .contact-section form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s;
+        }
+
+        .contact-section form input:focus, .contact-section form textarea:focus {
+            border-color: #ff4081;
+        }
+
+        .contact-section form button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            background-color: #ff4081;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .contact-section form button:hover {
+            background-color: #e91e63;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-button {
+                padding: 12px 40px;
+                font-size: 1.2rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- صفحه اصلی -->
+    <div class="container my-5" id="content-wrapper">
+        <div class="hero">
+            <div class="text-overlay">
+                <h1 class="display-3 fw-bold text-content">پودر چربی برای دام‌های سالم و پرتوان</h1>
+                <p class=" fw-bold  text-white">ما بهترین محصولات با بالاترین کیفیت برای دام‌های شما ارائه می‌دهیم. از محصولات ما دیدن کنید و تجربه‌ای متفاوت را در تغذیه دام‌ها داشته باشید.</p>
+                <a href="products.php" class="btn hero-button">مشاهده محصولات</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- کارت‌های خدمات -->
+    <div class="container">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-icon">🌾</div>
+                <h3>خدمات دامداران</h3>
+                <p>ما بهترین پودر چربی دامی را برای دامداران فراهم می‌کنیم. پودر چربی با کیفیت، بهترین رشد.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3>تحقیقات و نوآوری</h3>
+                <p>پیشرو در تحقیقات نوآورانه برای صنعت دامپروری  .</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚜</div>
+                <h3>تجهیزات مدرن</h3>
+                <p>تجهیزات پیشرفته برای تولید پودر چربی دامی با بالاترین کیفیت.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش اول -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h2 class="section-title">پودر چربی چیست؟</h2>
+                <p class="section-text">پودر چربی یک مکمل با کیفیت است که انرژی مورد نیاز دام‌ها را تأمین می‌کند. این محصول معمولاً از 99% چربی خالص تشکیل شده است.</p>
+                <p class="section-text">با استفاده از این محصول، دام‌ها در شرایط سخت تولید، استرس دمایی و کمبود انرژی به راحتی انرژی مورد نیاز خود را تأمین می‌کنند.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="g1.jpg" alt="پودر چربی" class="img-fluid section-image zoom-in">
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش دوم -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h2 class="section-title">مزایای پودر چربی</h2>
+                <ul class="section-text">
+                    <li>افزایش جذب ویتامین‌های محلول در چربی</li>
+                    <li>کاهش تنش گرمایی در گاوهای شیری</li>
+                    <li>افزایش تولید شیر و بهبود تولید مثل</li>
+                    <li>افزایش انرژی برای دام‌های در حال رشد</li>
+                    <li>بهبود وضعیت سلامت دام‌ها</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="charb3.jpg" alt="مزایا" class="img-fluid section-image zoom-in">
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش سوم -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h2 class="section-title">چرا پودر چربی را انتخاب کنیم؟</h2>
+                <p class="section-text">چربی یکی از مهم‌ترین منابع انرژی برای دام‌هاست و به شما کمک می‌کند تا دام‌های شما در بهترین شرایط تولید و رشد داشته باشند. این محصول به طور ویژه برای گاوهای شیری و دام‌های پرواری طراحی شده است.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="charb1.jpg" alt="کاربردها" class="img-fluid section-image zoom-in">
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش چهارم درباره شرکت -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h2 class="section-title">درباره شرکت ما</h2>
+                <p class="section-text">شرکت ما با سابقه‌ای درخشان در صنعت تولید خوراک دام، بر آن است که بهترین و با کیفیت‌ترین محصولات را برای دامداران عزیز تأمین کند.</p>
+                <p class="section-text">ما با استفاده از جدیدترین تکنولوژی‌ها و روش‌های علمی روز دنیا، محصولات خود را تولید می‌کنیم تا نیازهای بازار را به بهترین نحو برآورده کنیم.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="charb.jpg" alt="درباره شرکت" class="img-fluid section-image zoom-in">
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
+
