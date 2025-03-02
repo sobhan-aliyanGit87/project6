@@ -192,6 +192,9 @@ include("header.html");
         <p><strong>شماره تماس:</strong> <a href="tel:09134300158" style="color: #ff6f61;">09134300158</a></p>
         <p><strong>ایمیل:</strong> <a href="mailto:kiafarayandnutrikaco@gmail.com" style="color: #ff6f61;">kiafarayandnutrikaco@gmail.com</a></p>
         <p><strong> نام و نام خانوادگی و اطلاعات:</strong> <a href="tel:09134300158" style="color: #ff6f61;">سبحان علیان یازدهم شبکه 2 </a></p>
+        <p><strong> استان:</strong> <a href="tel:09134300158" style="color: #ff6f61;">اصفهان نجف آباد</a></p>
+        <p><strong> سال تحصیلی:</strong> <a href="tel:09134300158" style="color: #ff6f61;">1403,1404</a></p>
+        <p><strong>  معلم:</strong> <a href="tel:09134300158" style="color: #ff6f61;">آقای فتاحی</a></p>
         <div class="social-links">
             <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
